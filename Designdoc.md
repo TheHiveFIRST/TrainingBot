@@ -24,7 +24,7 @@ The robot is 16 by 16 inches, and able to hold onto 2 artifacts.
 
 Location from the centre With NWU coordinate system is as follows:
 
-| Module CANID | X distance from centre (in) | Y distance from centre (in) | Rotational offset |
+| Module CANID (drive, turn) | X distance from centre (in) | Y distance from centre (in) | Rotational offset |
 | :----------------- | :-------: | :-------: | :--------: |
 | Front Left (1,2)   | 4.286576  | 5.245126  | 1/4 $\pi   |      
 | Bottom Left (3,4)  | -6.250000 | 6.250000  | -1/2 $\pi  |
