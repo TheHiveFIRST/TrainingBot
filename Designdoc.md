@@ -8,6 +8,8 @@ The robot is 16 by 16 inches, and able to hold onto 2 artifacts.
 - Intake wheels are 2in. diameter
 - 2 NEO 550 for intaking (1 for the contact wheel, 1 for the belt system)
 - 3 limit switches at each possible position in the system
+- Feeder CAN ID = 10
+- Roller CAN ID = 9
 
 ### Shooter
 - 1 NEO mounted to with 84T to 36T reduction (7:3)

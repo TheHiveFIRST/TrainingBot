@@ -16,4 +16,10 @@ public final class Constants {
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
   }
+
+  public static class IntakeConstants {
+    public static final int ROLLER_CAN_ID = 9;
+    public static final int FEEDER_CAN_ID = 10;
+    public static final int MAX_LIMIT_SWITCHES = 3;
+  }
 }
