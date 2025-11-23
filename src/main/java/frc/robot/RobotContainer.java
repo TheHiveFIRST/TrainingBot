@@ -28,8 +28,8 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final DriveSubsystem mDriveSubsystem = new DriveSubsystem(); 
 
-  private final CommandXboxController driverController =
-    new CommandXboxController(OperatorConstants.DRIVER_CONTROLLER_PORT);
+  private final CommandXboxController mDriverController =
+    new CommandXboxController(OperatorConstants.DRIVER_CONTROLLER);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -41,9 +41,9 @@ public class RobotContainer {
         // Turning is controlled by the X axis of the right stick. field relative set true/false 
         new RunCommand(
             () -> mDriveSubsystem.drive(
-                -MathUtil.applyDeadband(driverController.getLeftY(), OperatorConstants.DRIVE_DEADBAND),
-                -MathUtil.applyDeadband(driverController.getLeftX(), OperatorConstants.DRIVE_DEADBAND),
-                -MathUtil.applyDeadband(driverController.getRightX(), OperatorConstants.DRIVE_DEADBAND),
+                -MathUtil.applyDeadband(mDriverController.getLeftY(), OperatorConstants.DRIVE_DEADBAND),
+                -MathUtil.applyDeadband(mDriverController.getLeftX(), OperatorConstants.DRIVE_DEADBAND),
+                -MathUtil.applyDeadband(mDriverController.getRightX(), OperatorConstants.DRIVE_DEADBAND),
                 false),
             mDriveSubsystem));
   }
@@ -64,10 +64,10 @@ public class RobotContainer {
 
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
-    driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
 
-    driverController.rightBumper().whileTrue(new RunCommand(
-            () -> mDriveSubsystem.setX(), mDriveSubsystem));
+    //schedule defense position when driver controller right bumper is pressed 
+    mDriverController.rightBumper()
+      .whileTrue(mDriveSubsystem.defensePosition());
   }
 
   /**

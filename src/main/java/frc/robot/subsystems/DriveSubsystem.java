@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.hal.FRCNetComm.tInstances;
 import edu.wpi.first.hal.FRCNetComm.tResourceType;
@@ -176,6 +177,14 @@ public class DriveSubsystem extends SubsystemBase {
    */
   public double getTurnRate() {
     return mGyro.getRate() * (DriveConstants.GYRO_REVERSED ? -1.0 : 1.0);
+  }
+
+  //command to set module positions to an X shape for defense 
+  public Command defensePosition(){
+    return run(
+      () -> {
+        setX();
+      });
   }
   
 }
