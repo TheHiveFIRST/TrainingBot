@@ -20,89 +20,89 @@ import edu.wpi.first.math.util.Units;
 public final class Constants {
   public static final class DriveConstants{ 
     //allowed max speeds
-    public static final double kMaxSpeedMetersPerSecond = 4.8;
-    public static final double kMaxAngularSpeed = 2 * Math.PI; //rad/s 
+    public static final double MAX_SPEED_METERS_PER_SECOND = 4.8;
+    public static final double MAX_ANGULAR_SPEED = 2 * Math.PI; //rad/s 
 
     //Chassis config - width, depth, CAN IDS and angular offset values in Desgndoc.md
-    public static final double kFrontLeftWidth = Units.inchesToMeters(5.245126);
-    public static final double kFrontRightWidth = Units.inchesToMeters(5.245126);
-    public static final double kBackLeftWidth = Units.inchesToMeters(6.250000);
-    public static final double kBackRightWidth = Units.inchesToMeters(6.250000);
+    public static final double FRONT_LEFT_WIDTH = Units.inchesToMeters(5.245126);
+    public static final double FRONT_RIGHT_WIDTH = Units.inchesToMeters(5.245126);
+    public static final double BACK_LEFT_WIDTH = Units.inchesToMeters(6.250000);
+    public static final double BACK_RIGHT_WIDTH = Units.inchesToMeters(6.250000);
     // horizontal width/distance from robot center to each wheel 
-    public static final double kFrontLeftDepth = Units.inchesToMeters(4.286576);
-    public static final double kFrontRightDepth = Units.inchesToMeters(4.286576);
-    public static final double kBackLeftDepth = Units.inchesToMeters(6.250000);
-    public static final double kBackRightDepth = Units.inchesToMeters(6.250000);
+    public static final double FRONT_LEFT_DEPTH = Units.inchesToMeters(4.286576);
+    public static final double FRONT_RIGHT_DEPTH = Units.inchesToMeters(4.286576);
+    public static final double BACK_LEFT_DEPTH = Units.inchesToMeters(6.250000);
+    public static final double BACK_RIGHT_DEPTH = Units.inchesToMeters(6.250000);
     //depth/frontback distance from robot center to each wheel 
 
-    public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(
-        new Translation2d(kFrontLeftDepth, kFrontLeftWidth),
-        new Translation2d(kFrontRightDepth, -kFrontRightWidth),
-        new Translation2d(-kBackLeftDepth, kBackLeftWidth),
-        new Translation2d(-kBackRightDepth, -kBackRightWidth));
+    public static final SwerveDriveKinematics DriveKinematics = new SwerveDriveKinematics(
+        new Translation2d(FRONT_LEFT_DEPTH, FRONT_LEFT_WIDTH),
+        new Translation2d(FRONT_RIGHT_DEPTH, -FRONT_RIGHT_WIDTH),
+        new Translation2d(-BACK_LEFT_DEPTH, BACK_LEFT_WIDTH),
+        new Translation2d(-BACK_RIGHT_DEPTH, -BACK_RIGHT_WIDTH));
       
     //angular offsets of module relative to chassis (rad)
-    public static final double kFrontLeftChassisAngularOffset = Math.PI/4;
-    public static final double kFrontRightChassisAngularOffset = -Math.PI/4;
-    public static final double kBackLeftChassisAngularOffset = -Math.PI/2;
-    public static final double kBackRightChassisAngularOffset = 0;
+    public static final double FRONT_LEFT_CHASSIS_ANGULAR_OFFSET = Math.PI/4;
+    public static final double FRONT_RIGHT_CHASSIS_ANGULAR_OFFSET = -Math.PI/4;
+    public static final double BACK_LEFT_CHASSIS_ANGULAR_OFFSET = -Math.PI/2;
+    public static final double BACK_RIGHT_CHASSIS_ANGULAR_OFFSET = 0;
     
     //SPARK MAX CAN IDs 
-    public static final int kFrontLeftDrivingCanId = 1;
-    public static final int kFrontLeftTurningCanId = 2;
+    public static final int FRONT_LEFT_DRIVING_CAN_ID = 1;
+    public static final int FRONT_LEFT_TURNING_CAN_ID = 2;
 
     
-    public static final int kFrontRightDrivingCanId = 7;
-    public static final int kFrontRightTurningCanId = 8;
+    public static final int FRONT_RIGHT_DRIVING_CAN_ID = 7;
+    public static final int FRONT_RIGHT_TURNING_CAN_ID = 8;
     
-    public static final int kBackLeftDrivingCanId = 3;
-    public static final int kBackLeftTurningCanId = 4;
+    public static final int BACK_LEFT_DRIVING_CAN_ID = 3;
+    public static final int BACK_LEFT_TURNING_CAN_ID = 4;
    
-    public static final int kBackRightDrivingCanId = 5;
-    public static final int kBackRightTurningCanId = 6;
+    public static final int BACK_RIGHT_DRIVING_CAN_ID = 5;
+    public static final int BACK_RIGHT_TURNING_CAN_ID = 6;
 
-    public static final boolean kGyroReversed = false;
+    public static final boolean GYRO_REVERSED = false;
   }
 
   public static final class ModuleConstants{
     // The MAXSwerve module 3 pinion ggears: 12T,
     // 13T, or 14T. This changes the drive speed of the module (more teeth = faster)
-    public static final int kDrivingMotorPinionTeeth = 14;
+    public static final int DRIVING_MOTOR_PINION_TEETH = 14;
 
     // Calculations required for driving motor conversion factors and feed forward
-    public static final double kDrivingMotorFreeSpeedRps = NeoMotorConstants.kFreeSpeedRpm / 60;
-    public static final double kWheelDiameterMeters = 0.0762;
-    public static final double kWheelCircumferenceMeters = kWheelDiameterMeters * Math.PI;
+    public static final double DRIVING_MOTOR_FREE_SPEED_RPS = NeoMotorConstants.FREE_SPEED_RPM / 60;
+    public static final double WHEEL_DIAMETER_METERS = 0.0762;
+    public static final double WHEEL_CIRCUMFERENCE_METERS = WHEEL_DIAMETER_METERS * Math.PI;
     // 45 teeth on the wheel's bevel gear, 22 teeth on the first-stage spur gear, 15
     // teeth on the bevel pinion
-    public static final double kDrivingMotorReduction = (45.0 * 22) / (kDrivingMotorPinionTeeth * 15);
-    public static final double kDriveWheelFreeSpeedRps = (kDrivingMotorFreeSpeedRps * kWheelCircumferenceMeters)
-        / kDrivingMotorReduction;
+    public static final double DRIVING_MOTOR_REDUCTION = (45.0 * 22) / (DRIVING_MOTOR_PINION_TEETH * 15);
+    public static final double DRIVE_WHEEL_FREE_SPEED_RPS = (DRIVING_MOTOR_FREE_SPEED_RPS * WHEEL_CIRCUMFERENCE_METERS)
+        / DRIVING_MOTOR_REDUCTION;
 
   }
   public static class OperatorConstants {
-    public static final int kDriverControllerPort = 0;
-    public static final double kDriveDeadband = 0.05; 
+    public static final int DRIVER_CONTROLLER_PORT = 0;
+    public static final double DRIVE_DEADBAND = 0.05; 
   }
 
   //TODO: go over and update auto constants according to necessary auto commands
   public static final class AutoConstants {
-    public static final double kMaxSpeedMetersPerSecond = 3;
-    public static final double kMaxAccelerationMetersPerSecondSquared = 3;
-    public static final double kMaxAngularSpeedRadiansPerSecond = Math.PI;
-    public static final double kMaxAngularSpeedRadiansPerSecondSquared = Math.PI;
+    public static final double MAX_SPEED_METERS_PER_SECOND = 3;
+    public static final double MAX_ACCELERATION_METERS_PER_SECOND_SQUARED = 3;
+    public static final double MAX_ANGULAR_SPEED_RADIANS_PER_SECOND = Math.PI;
+    public static final double MAX_ANGULAR_SPEED_RADIANS_PER_SECONDSquared = Math.PI;
 
-    public static final double kPXController = 1;
-    public static final double kPYController = 1;
-    public static final double kPThetaController = 1;
+    public static final double P_X_CONTROLLER = 1;
+    public static final double P_Y_CONTROLLER = 1;
+    public static final double P_THETA_CONTROLLER = 1;
 
     // Constraint for the motion profiled robot angle controller
-    public static final TrapezoidProfile.Constraints kThetaControllerConstraints = new TrapezoidProfile.Constraints(
-        kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);
+    public static final TrapezoidProfile.Constraints THETA_CONTROLLER_CONSTRAINTS = new TrapezoidProfile.Constraints(
+        MAX_ANGULAR_SPEED_RADIANS_PER_SECOND, MAX_ANGULAR_SPEED_RADIANS_PER_SECONDSquared);
   }
 
   public static final class NeoMotorConstants {
-    public static final double kFreeSpeedRpm = 5676;
+    public static final double FREE_SPEED_RPM = 5676;
   }
 
 }

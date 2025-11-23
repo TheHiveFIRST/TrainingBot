@@ -26,26 +26,26 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-  private final DriveSubsystem robotDrive = new DriveSubsystem(); 
+  private final DriveSubsystem mDriveSubsystem = new DriveSubsystem(); 
 
   private final CommandXboxController driverController =
-    new CommandXboxController(OperatorConstants.kDriverControllerPort);
+    new CommandXboxController(OperatorConstants.DRIVER_CONTROLLER_PORT);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
 
-    robotDrive.setDefaultCommand(
+    mDriveSubsystem.setDefaultCommand(
         // The left stick controls translation of the robot.
         // Turning is controlled by the X axis of the right stick. field relative set true/false 
         new RunCommand(
-            () -> robotDrive.drive(
-                -MathUtil.applyDeadband(driverController.getLeftY(), OperatorConstants.kDriveDeadband),
-                -MathUtil.applyDeadband(driverController.getLeftX(), OperatorConstants.kDriveDeadband),
-                -MathUtil.applyDeadband(driverController.getRightX(), OperatorConstants.kDriveDeadband),
+            () -> mDriveSubsystem.drive(
+                -MathUtil.applyDeadband(driverController.getLeftY(), OperatorConstants.DRIVE_DEADBAND),
+                -MathUtil.applyDeadband(driverController.getLeftX(), OperatorConstants.DRIVE_DEADBAND),
+                -MathUtil.applyDeadband(driverController.getRightX(), OperatorConstants.DRIVE_DEADBAND),
                 false),
-            robotDrive));
+            mDriveSubsystem));
   }
 
   /**
@@ -67,7 +67,7 @@ public class RobotContainer {
     driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
 
     driverController.rightBumper().whileTrue(new RunCommand(
-            () -> robotDrive.setX(), robotDrive));
+            () -> mDriveSubsystem.setX(), mDriveSubsystem));
   }
 
   /**
