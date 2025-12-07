@@ -20,7 +20,7 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.RelativeEncoder;
 
-public class MaxSwerveModule extends SubsystemBase{ //TO DO: PROBABLY NEED TO EXTEND SUBSYSTEM BASE 
+public class MaxSwerveModule extends SubsystemBase{ 
     
     private final SparkMax mDrivingSpark; 
     private final SparkMax mTurningSpark; 

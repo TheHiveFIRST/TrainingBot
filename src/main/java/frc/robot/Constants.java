@@ -70,7 +70,7 @@ public final class Constants {
     public static final int DRIVING_MOTOR_PINION_TEETH = 14;
 
     // Calculations required for driving motor conversion factors and feed forward
-    public static final double DRIVING_MOTOR_FREE_SPEED_RPS = NeoMotorConstants.FREE_SPEED_RPM / 60;
+    public static final double DRIVING_MOTOR_FREE_SPEED_RPS = MotorConstants.FREE_SPEED_RPM / 60;
     public static final double WHEEL_DIAMETER_METERS = 0.0762;
     public static final double WHEEL_CIRCUMFERENCE_METERS = WHEEL_DIAMETER_METERS * Math.PI;
     // 45 teeth on the wheel's bevel gear, 22 teeth on the first-stage spur gear, 15
@@ -85,23 +85,11 @@ public final class Constants {
     public static final double DRIVE_DEADBAND = 0.05; 
   }
 
-  //TODO: go over and update auto constants according to necessary auto commands
   public static final class AutoConstants {
-    public static final double MAX_SPEED_METERS_PER_SECOND = 3;
-    public static final double MAX_ACCELERATION_METERS_PER_SECOND_SQUARED = 3;
-    public static final double MAX_ANGULAR_SPEED_RADIANS_PER_SECOND = Math.PI;
-    public static final double MAX_ANGULAR_SPEED_RADIANS_PER_SECONDSquared = Math.PI;
-
-    public static final double P_X_CONTROLLER = 1;
-    public static final double P_Y_CONTROLLER = 1;
-    public static final double P_THETA_CONTROLLER = 1;
-
-    // Constraint for the motion profiled robot angle controller
-    public static final TrapezoidProfile.Constraints THETA_CONTROLLER_CONSTRAINTS = new TrapezoidProfile.Constraints(
-        MAX_ANGULAR_SPEED_RADIANS_PER_SECOND, MAX_ANGULAR_SPEED_RADIANS_PER_SECONDSquared);
+    //add constants here that are not in pathplanner if needed
   }
 
-  public static final class NeoMotorConstants {
+  public static final class MotorConstants {
     public static final double FREE_SPEED_RPM = 5676;
   }
 
