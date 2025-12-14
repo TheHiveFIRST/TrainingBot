@@ -12,8 +12,22 @@ package frc.robot;
  * <p>It is advised to statically import this class (or one of its inner classes) wherever the
  * constants are needed, to reduce verbosity.
  */
+
 public final class Constants {
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
   }
+    //Change to actual CAN IDs 
+  public static class ShooterConstants {
+    public static final int SHOOTER_LEADER_CAN_ID = 0; 
+    public static final int SHOOTER_FOLLOWER_CAN_ID = 1;
+    public static final int PIVOTMOTOR_CAN_ID = 2; 
+  }
+
+  public static class PIDConstants {
+    public static final double PIVOT_KP = 1.4; 
+    public static final double PIVOT_KI = 0;
+    public static final double PIVOT_KD = 0.05;
+  }
+
 }
