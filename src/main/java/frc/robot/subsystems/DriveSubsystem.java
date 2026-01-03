@@ -20,7 +20,8 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
-
+import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.networktables.StructArrayPublisher;
 import frc.robot.Constants.DriveConstants;
 
 public class DriveSubsystem extends SubsystemBase {
@@ -49,6 +50,20 @@ public class DriveSubsystem extends SubsystemBase {
   //mGyro sensor/IMU (usb input type to roborio)
   private final AHRS mGyro = new AHRS(NavXComType.kUSB1); 
 
+  SwerveModuleState[] states = new SwerveModuleState[] {
+    mFrontLeft.getState(),
+    mFrontRight.getState(),
+    mBackLeft.getState(),
+    mBackRight.getState()
+  };
+
+  SwerveModulePosition[] positions = new SwerveModulePosition[] {
+    mFrontLeft.getPosition(),
+    mFrontRight.getPosition(),
+    mBackLeft.getPosition(),
+    mBackRight.getPosition()
+  };
+
   //Odometry class for tracking robot pose 
   SwerveDriveOdometry Odometry = new SwerveDriveOdometry(
     DriveConstants.DriveKinematics,
@@ -60,6 +75,11 @@ public class DriveSubsystem extends SubsystemBase {
         mBackRight.getPosition()
   });
 
+
+  //network publisher for swerveStates 
+  StructArrayPublisher<SwerveModuleState> publisher = NetworkTableInstance.getDefault()
+    .getStructArrayTopic("SwerveStates", SwerveModuleState.struct).publish();
+  
   
   public DriveSubsystem() {
     //usage reporting for MAXSwerve template 
@@ -77,6 +97,8 @@ public class DriveSubsystem extends SubsystemBase {
             mBackLeft.getPosition(),
             mBackRight.getPosition()
         });
+  //publish the current state of the robot
+    publisher.set(states);
   }
 
   /**
@@ -125,6 +147,7 @@ public class DriveSubsystem extends SubsystemBase {
     mFrontRight.setDesiredState(swerveModuleStates[1]);
     mBackLeft.setDesiredState(swerveModuleStates[2]);
     mBackRight.setDesiredState(swerveModuleStates[3]);
+
   }
 
   /**
