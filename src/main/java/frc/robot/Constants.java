@@ -22,12 +22,12 @@ public final class Constants {
     public static final int SHOOTER_LEADER_CAN_ID = 0; 
     public static final int SHOOTER_FOLLOWER_CAN_ID = 1;
     public static final int PIVOTMOTOR_CAN_ID = 2; 
-  }
 
-  public static class PIDConstants {
     public static final double PIVOT_KP = 1.4; 
     public static final double PIVOT_KI = 0;
     public static final double PIVOT_KD = 0.05;
+
+    public static final double CLOSE_ANGLE = 30;
   }
 
 }

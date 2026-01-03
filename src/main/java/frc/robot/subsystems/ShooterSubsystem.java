@@ -8,8 +8,10 @@ import com.revrobotics.spark.SparkBase.ResetMode;
 import frc.robot.Constants;
 
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.configs.ShooterConfig;
+
 
 public class ShooterSubsystem extends SubsystemBase{
     
@@ -39,7 +41,7 @@ private double pivotOutput = 0;
                             ResetMode.kResetSafeParameters, 
                             PersistMode.kPersistParameters);
     
-    mPivotPID = new PIDController(Constants.PIDConstants.PIVOT_KP, Constants.PIDConstants.PIVOT_KI, Constants.PIDConstants.PIVOT_KD); //organize constants --> shooter constants class 
+    mPivotPID = new PIDController(Constants.ShooterConstants.PIVOT_KP, Constants.ShooterConstants.PIVOT_KI, Constants.ShooterConstants.PIVOT_KD); //organize constants --> shooter constants class 
     }
     
 //methods 
@@ -62,6 +64,17 @@ public void pivotControlPID(double targetAngle) //fix
 public double getValueEncoder() 
 {
     return mShooterEncoder.getPosition();
+}
+
+
+//command to set shooter to [xyz] angle
+
+public Command setClosePosition() 
+{
+    return run(
+    () -> {
+        pivotControlPID(Constants.ShooterConstants.CLOSE_ANGLE);
+    });
 }
 
 }
